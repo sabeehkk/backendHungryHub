@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(
   cors({
-    origin: "https://main--clinquant-biscotti-874903.netlify.app",
+    origin: "https://clienthungryhub.vercel.app",
     credentials: true,
   })
 );
@@ -29,7 +29,7 @@ const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     origin: (origin, callback) => {
-      callback(null, origin === "https://main--clinquant-biscotti-874903.netlify.app");
+      callback(null, origin === "https://clienthungryhub.vercel.app");
     },
     credentials: true,
   },
