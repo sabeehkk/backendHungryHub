@@ -33,6 +33,7 @@ export const signup = async (req, res) => {
 //userLogin-------------------------
 export const userLogin = async (req, res) => {
   try {
+    console.log(req.body,'inside login');
     const { email, password } = req.body;
     const userData = await userModel.findOne({ email });
     if (!userData) {

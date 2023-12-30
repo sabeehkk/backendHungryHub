@@ -10,7 +10,6 @@ import {
   otpVerification,
   resetPassword,
 } from "../controller/user/authController.js";
-
 import {
   updateProfile,
   updatePassword,
