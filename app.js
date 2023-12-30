@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(
   cors({
-    origin: "https://main--celadon-malabi-0333d8.netlify.app",
+    origin: "https://main--golden-axolotl-1d358a.netlify.app",
     credentials: true,
   })
 );
@@ -29,7 +29,7 @@ const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     origin: (origin, callback) => {
-      callback(null, origin === "https://main--celadon-malabi-0333d8.netlify.app");
+      callback(null, origin === "https://main--golden-axolotl-1d358a.netlify.app");
     },
     credentials: true,
   },
