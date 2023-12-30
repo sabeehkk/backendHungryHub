@@ -56,8 +56,8 @@ export const Order = async (req, res) => {
           },
         ],
         mode: "payment",
-        success_url: `${'https://clienthungryhub.vercel.app'}/payment-success/${cartData?.user}`,
-        cancel_url: `${'https://clienthungryhub.vercel.app'}/payment-fail`,
+        success_url: `${process.env.CLIENT_URL}/payment-success/${cartData?.user}`,
+        cancel_url: `${process.env.CLIENT_URL}/payment-fail`,
       });
       await OrderModel.create({
         userId: user._id,
