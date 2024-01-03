@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(
   cors({
-    origin: "https://clienthungryhub.vercel.app",
+    origin: "https://hungryyhub.vercel.app",
     credentials: true,
   })
 );
@@ -29,7 +29,7 @@ const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     origin: (origin, callback) => {
-      callback(null, origin === "https://clienthungryhub.vercel.app");
+      callback(null, origin === "https://hungryyhub.vercel.app");
     },
     credentials: true,
   },
