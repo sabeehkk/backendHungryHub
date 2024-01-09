@@ -19,7 +19,7 @@ import {
   getUserData,
   saveChat,
   getChat,
-} from "../controller/user/userController.js";
+}from "../controller/user/userController.js";
 import {
   getCategories,
   getRestWithCategory,

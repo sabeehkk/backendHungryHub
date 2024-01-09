@@ -35,7 +35,7 @@ export const Order = async (req, res) => {
         paymentStatus,
       });
       await CartModel.deleteOne({ _id: cartData._id });
-      res.status(200).send({
+      res.status(200).json({
         success: true,
         message: "order success",
       });
@@ -120,13 +120,13 @@ export const getOrderItems = async (req, res) => {
     const orderItems = await OrderModel.findOne({ _id: id })
       .sort({ _id: -1 })
       .populate("item.product")
-    res.status(200).send({
+    res.status(200).json({
       success: true,
       orderItems,
     });
   } catch (error) {
     console.log(error);
-    res.status(500).send({
+    res.status(500).json({
       success: false,
       message: "Server error.",
     });
@@ -140,18 +140,18 @@ export const  getOrders= async (req, res) => {
       .sort({ _id: -1 })
       .populate("item.product");
     if (orders) {
-      res.status(200).send({
+      res.status(200).json({
         success: true,
         orders,
       });
     } else {
-      res.status(404).send({
+      res.status(404).json({
         success: false,
         message: "You don't have any order",
       });
     }
   } catch (error) {
-    res.status(500).send({
+    res.status(500).json({
       success: false,
       message: "server error",
     });
@@ -199,7 +199,7 @@ export const cancelOrder= async (req, res) => {
             }
           );
         }
-        res.status(200).send({
+        res.status(200).json({
           success: true,
           message: "Item cancelled",
         });
@@ -215,20 +215,20 @@ export const cancelOrder= async (req, res) => {
           );
         }
       } else {
-        res.status(400).send({
+        res.status(400).json({
           success: false,
           message: "Item not found or cannot be cancelled.",
         });
       }
     } else {
-      res.status(400).send({
+      res.status(400).json({
         success: false,
         message: "Order not found.",
       });
     }
   } catch (error) {
     console.error("Error cancelling item:", error);
-    res.status(500).send({
+    res.status(500).json({
       success: false,
       message: "Internal server error",
     });
@@ -243,7 +243,7 @@ export const  doRating= async (req,res) => {
       _id: restId,
     });
     if (existingRating) {
-      res.status(400).send({
+      res.status(400).json({
         success: false,
         message: "You have already rating this restaurant...",
       });
@@ -252,14 +252,14 @@ export const  doRating= async (req,res) => {
         { _id: restId },
         { $push: { rating: { userId, rating } } }
       );
-      res.status(200).send({
+      res.status(200).json({
         success: true,
         message: "Thank you! Rating submitted successfully.",
       });
     }
   } catch (error) {
     console.log(error);
-    res.status(500).send({
+    res.status(500).json({
       success: false,
       message: "Server error.",
     });
@@ -274,7 +274,7 @@ export const doReview= async (req, res) => {
       _id: restId,
     });
     if (existingReview) {
-      res.status(400).send({
+      res.status(400).json({
         success: false,
         message: "You have already review this restaurant...",
       });
@@ -283,13 +283,13 @@ export const doReview= async (req, res) => {
         { _id: restId },
         { $push: { reviews: { userId, review } } }
       );
-      res.status(200).send({
+      res.status(200).json({
         success: true,
         message: "Thank you! Review submitted successfully.",
       });
     }
   } catch (error) {
-    res.status(500).send({
+    res.status(500).json({
       success: false,
       message: "Server error.",
     });
