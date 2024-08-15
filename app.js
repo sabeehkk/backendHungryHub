@@ -61,9 +61,12 @@ app.use(express.static("public"));
 app.use("/", userRouter);
 app.use("/admin", adminRouter);
 app.use("/restaurent", restaurentRouter);
+// app.use("/employee", employeeRouter);
 app.use("/employee", employeeRouter);
 
-const PORT = process.env.PORT ?? 4000;
+// const PORT = process.env.PORT ?? 4000;
+const PORT = process.env.PORT || 4000;
+
 server.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
